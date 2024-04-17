@@ -1,31 +1,29 @@
-# I Don't Know React
-
-## Introduction
+# Introduction
 
 React의 전반적인 구조를 이해하고 기록하고자 합니다. 삽질 로드맵은 계속 업데이트할 예정입니다.
 
-## 삽질 로드맵
+# 삽질 로드맵
 
-### 전체 틀
+## 전체 틀
 
 [React Codebase Overview](https://legacy.reactjs.org/docs/codebase-overview.html)
 
-### Fiber
+## Fiber
 
 [Naver D2 React 파이버 아키텍처 분석](https://d2.naver.com/helloworld/2690975)  
 [React Fiber Architecture](https://github.com/acdlite/react-fiber-architecture)
 
-### Hooks
+## Hooks
 
-#### 탄생 배경
+### 탄생 배경
 
 [[10분 테코톡] 룩소의 React Hooks](https://www.youtube.com/watch?v=qjEcsNYFWYg)
 
-#### 클로저 기반 설명
+### 클로저 기반 설명
 
 [JSCont - Can Swyx recreate React Hooks and useState in under 30 min?](https://www.youtube.com/watch?v=KJP1E-Y-xyo)
 
-#### React Code 기반 분석
+### React Code 기반 분석
 
 [Under the hood of React’s hooks system](https://medium.com/the-guild/under-the-hood-of-reacts-hooks-system-eb59638c9dba)  
 [How does React associate Hook calls with components?](https://legacy.reactjs.org/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components)  
