@@ -4,6 +4,8 @@ React의 전반적인 구조를 이해하고 기록하고자 합니다. 삽질 �
 
 # 삽질 로드맵
 
+삽질은 위에서 아래로 (정렬된 순서대로 할 예정입니다)
+
 ## 전체 틀
 
 [React Codebase Overview](https://legacy.reactjs.org/docs/codebase-overview.html)
