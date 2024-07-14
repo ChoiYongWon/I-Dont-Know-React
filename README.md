@@ -1,14 +1,15 @@
 # Introduction
 
-React의 전반적인 구조를 이해하고 기록하고자 합니다. 삽질 로드맵은 계속 업데이트할 예정입니다.
+React의 전반적인 구조를 이해하고 기록하고자 합니다. 지속적으로 업데이트할 예정입니다.
 
-# 삽질 로드맵
-
-삽질은 위에서 아래로 (정렬된 순서대로 할 예정입니다)
+<details>
+<summary>삽질 로드맵</summary>
 
 ## 전체 틀
 
-[React Codebase Overview](https://legacy.reactjs.org/docs/codebase-overview.html)
+[React Codebase Overview](https://legacy.reactjs.org/docs/codebase-overview.html)  
+[React 톺아보기](https://goidle.github.io/react/in-depth-react-preview/)  
+[React 까보기 시리즈 youtube](https://www.youtube.com/playlist?list=PLpq56DBY9U2B6gAZIbiIami_cLBhpHYCA)
 
 ## Fiber
 
@@ -33,3 +34,5 @@ React의 전반적인 구조를 이해하고 기록하고자 합니다. 삽질 �
 [How Does setState Know What to Do?](https://overreacted.io/how-does-setstate-know-what-to-do/)  
 [How React Hooks Work - in depth + React Render Cycle Explained](https://eliav2.github.io/how-react-hooks-work/)  
 [How do react hooks determine the component that they are for?](https://stackoverflow.com/questions/53974865/how-do-react-hooks-determine-the-component-that-they-are-for/53980190#53980190)
+
+</details>
