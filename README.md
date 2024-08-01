@@ -13,3 +13,18 @@
 > 24.07.30 기준 React [18.3.1](https://github.com/facebook/react/tree/v18.3.1) 버전을 기준으로 진행합니다.
 
 지속적으로 업데이트 할 예정입니다.
+
+## 전체 틀 및 용어
+
+(추후 추가 예정)
+
+## 과정
+
+### 1. Entry
+
+```jsx
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+```
+
+React는 여러 호스트(앱, 브라우저)에서 사용할 수 있습니다. 그 중에서 ReactDOM은 React를 브라우저에서 그려주는 역할을 담당합니다. `createRoot` 메소드를 통해 브라우저의 Container라는 공간에 실제 DOM을 연결하고 FiberRootNode와 HostRoot를 생성하고 `render` 메소드를 통해 workInProgress에서 App 컴포넌트를 생성해서 재조정 과정(Render, Commit Phase)를 거쳐 Container에 페인팅합니다.
