@@ -31,3 +31,7 @@ root.render(<App />);
 ```
 
 React는 여러 호스트(앱, 브라우저)에서 사용할 수 있습니다. 그 중에서 ReactDOM은 React를 브라우저에서 그려주는 역할을 담당합니다. `createRoot` 메소드를 통해 브라우저의 Container라는 공간에 실제 DOM을 연결하고 FiberRootNode와 HostRoot를 생성하고 `render` 메소드를 통해 workInProgress에서 App 컴포넌트를 생성해서 재조정 과정(Render, Commit Phase)를 거쳐 Container에 페인팅합니다.
+
+### 2. Initial Mount
+
+current의 FiberRoot를 복사해서 workInProgress를 생성하고 current랑 서로 alternate 속성으로 참조함. 이때 HostRoot인 div#root 태그만 생성됨. HostRoot를 대상으로 재조정 과정 진행 (workLoop 과정). workInProgress가 참조하는 값은 하나의 FiberNode이고 child가 있으면 workInProgress가 child로 바뀌면서 dfs형식으로 진행함 (beginwork 과정). 말단 FiberNode가 처리되면 FiberNode에 stateNode 속성으로 대응되는 HTMLNode값이 매핑되고 sibling이 존재하면 workInProgress을 sibling으로 설정한다. sibling이 존재하지 않으면 해당 Fiber는 재조정이 끝나고 return 속성 값인 부모 FiberNode를 workInProgress로 지정하여 재조정 과정을 마무리한다 (completeWork 과정). 재조정 과정이 마무리 되면 workInProgress 관련 값을 null로 초기화하고 FiberRootNode의 속성인 finishedWork에 workInProgress값을 할당한다 (commitRoot 과정). finishedWork를 실제 DOM에 Mount한다 (CommitMutation 과정).
