@@ -32,6 +32,32 @@ root.render(<App />);
 
 React는 여러 호스트(앱, 브라우저)에서 사용할 수 있습니다. 그 중에서 ReactDOM은 React를 브라우저에서 그려주는 역할을 담당합니다. `createRoot` 메소드를 통해 브라우저의 Container라는 공간에 실제 DOM을 연결하고 FiberRootNode와 HostRoot를 생성하고 `render` 메소드를 통해 workInProgress에서 App 컴포넌트를 생성해서 재조정 과정(Render, Commit Phase)를 거쳐 Container에 페인팅합니다.
 
+#### createRoot
+
+![Group 9](https://github.com/user-attachments/assets/b9f01ff9-2238-4c03-aa20-45e070997a04)
+
+
+createRoot는 Fiber 전체를 관리하는 FiberRoot 객체를 생성하고 containerInfo 속성에 실제 DOM을 매핑합니다. 그리고 HostRoot(최상위 Fiber) 역할을 하는 Fiber 객체를 생성하여 current 속성에 매핑합니다. 
+
+#### render
+
+![Group 19](https://github.com/user-attachments/assets/fac89df7-5812-4fc8-94a0-848c3d5a1324)
+
+
+current의 FiberRoot를 복사해서 workInProgress 객체를 생성하고 current랑 서로 alternate 속성으로 참조합니다. 그 HostRoot Fiber를 workInProgress 객체에 매핑하고 재조정 과정을 진행합니다.  
+
+즉, workInProgress 객체는 하나의 Fiber입니다.  
+
+
+
+하나의 workInProgress를 재조정할때 다음과 같은 순서로 진행됩니다.
+
+- childFiber가 존재하면 childFiber를 workInProgress로 설정
+- childFiber가 없다면 completeWork로 설정하고 매핑되는 HTML Node를 생성해서 stateNode 속성에 매핑
+- siblingFiber가 존재하면 siblingFiber를 workInProgress로 설정
+
+
+
 ### 2. Initial Mount
 
-current의 FiberRoot를 복사해서 workInProgress를 생성하고 current랑 서로 alternate 속성으로 참조함. 이때 HostRoot인 div#root 태그만 생성됨. HostRoot를 대상으로 재조정 과정 진행 (workLoop 과정). workInProgress가 참조하는 값은 하나의 FiberNode이고 child가 있으면 workInProgress가 child로 바뀌면서 dfs형식으로 진행함 (beginwork 과정). 말단 FiberNode가 처리되면 FiberNode에 stateNode 속성으로 대응되는 HTMLNode값이 매핑되고 sibling이 존재하면 workInProgress을 sibling으로 설정한다. sibling이 존재하지 않으면 해당 Fiber는 재조정이 끝나고 return 속성 값인 부모 FiberNode를 workInProgress로 지정하여 재조정 과정을 마무리한다 (completeWork 과정). 재조정 과정이 마무리 되면 workInProgress 관련 값을 null로 초기화하고 FiberRootNode의 속성인 finishedWork에 workInProgress값을 할당한다 (commitRoot 과정). finishedWork를 실제 DOM에 Mount한다 (CommitMutation 과정).
+ 이때 HostRoot인 div#root 태그만 생성됨. HostRoot를 대상으로 재조정 과정 진행 (workLoop 과정). workInProgress가 참조하는 값은 하나의 FiberNode이고 child가 있으면 workInProgress가 child로 바뀌면서 dfs형식으로 진행함 (beginwork 과정). 말단 FiberNode가 처리되면 FiberNode에 stateNode 속성으로 대응되는 HTMLNode값이 매핑되고 sibling이 존재하면 workInProgress을 sibling으로 설정한다. sibling이 존재하지 않으면 해당 Fiber는 재조정이 끝나고 return 속성 값인 부모 FiberNode를 workInProgress로 지정하여 재조정 과정을 마무리한다 (completeWork 과정). 재조정 과정이 마무리 되면 workInProgress 관련 값을 null로 초기화하고 FiberRootNode의 속성인 finishedWork에 workInProgress값을 할당한다 (commitRoot 과정). finishedWork를 실제 DOM에 Mount한다 (CommitMutation 과정).
