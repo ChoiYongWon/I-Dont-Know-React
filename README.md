@@ -15,6 +15,8 @@ _이해한 바탕으로 기록한 내용이기에 한계가 있을 수 있습니
 
 > 24.07.30 기준 React [18.3.1](https://github.com/facebook/react/tree/v18.3.1) 버전을 기준으로 진행합니다.
 
+[React-Debug 저장소](https://github.com/ChoiYongWon/react-debug) 👈 React 18.2 버전입니다. 해당 저장소를 fork하여 실습을 진행하시면 됩니다.
+
 지속적으로 업데이트 할 예정입니다.
 
 ## 전체 틀 및 용어
